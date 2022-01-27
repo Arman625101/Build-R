@@ -1,4 +1,4 @@
-import { BuildrComponent } from './component/buildr.component';
+import { BuildrComponent } from './components/buildr.component';
 
 export default class BuildR {
     constructor() {
@@ -14,7 +14,6 @@ export default class BuildR {
 
         document.addEventListener('customClick', (evt) => {
             const clickedPart = evt.detail;
-            alert(JSON.stringify(clickedPart));
             // In progress...
             // TODO: handle next actions
         });

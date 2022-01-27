@@ -27,7 +27,9 @@ export class BuildrComponent extends HTMLElement {
                     new CustomEvent('customClick', {
                         composed: true,
                         bubbles: true,
-                        detail: parts.find((part) => part.id === +event.target.id)
+                        detail: parts.find(
+                            (part) => part.id === +event.target.id
+                        )
                     })
                 );
             });
