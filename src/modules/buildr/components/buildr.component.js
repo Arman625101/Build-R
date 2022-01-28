@@ -24,7 +24,7 @@ export class BuildrComponent extends HTMLElement {
             item.innerText = part.name;
             item.addEventListener('click', (event) => {
                 this.dispatchEvent(
-                    new CustomEvent('customClick', {
+                    new CustomEvent('partsClickEvent', {
                         composed: true,
                         bubbles: true,
                         detail: parts.find(
