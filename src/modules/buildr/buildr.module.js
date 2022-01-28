@@ -1,24 +1,23 @@
-import { BuildrComponent } from './component/buildr.component';
+import { makeSingleTone } from '../../utils/utils';
+import PartsModule from '../parts/parts.module';
+import { BuildrComponent } from './components/buildr.component';
 
-export default class BuildR {
+export default class BuildrModule {
     constructor() {
-        if (!BuildR.instance) {
-            BuildR.instance = this;
-        }
-        return BuildR.instance;
+        makeSingleTone.call(this, BuildrModule);
     }
 
     render() {
         customElements.define('build-r', BuildrComponent);
-        const buildrElement = document.createElement('build-r');
+        const buildr = document.createElement('build-r');
 
-        document.addEventListener('customClick', (evt) => {
-            const clickedPart = evt.detail;
-            alert(JSON.stringify(clickedPart));
-            // In progress...
-            // TODO: handle next actions
-        });
+        buildr.addEventListener('partsClickEvent', this.handleClick);
+        
+        return buildr;
+    }
 
-        return buildrElement;
+    handleClick(event) {
+        const clickedPart = event.detail;
+        PartsModule.render(clickedPart);
     }
 }
