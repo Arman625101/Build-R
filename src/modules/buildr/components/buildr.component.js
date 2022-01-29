@@ -1,6 +1,6 @@
 import { PARTS } from '../../../global/constants';
 import { createStyle } from '../../../utils/utils';
-import styles from './style.scss';
+import styles from './buildr.styles.scss';
 
 export class BuildrComponent extends HTMLElement {
     #actions = PARTS;
