@@ -12,4 +12,34 @@ const PARTS = [
     { id: 3, action: 'create', name: PartsEnum.Footer }
 ];
 
-export { PARTS, ACTIONS, PartsEnum };
+const EditItems = [
+    {
+        id: 1,
+        name: 'color'
+    },
+    {
+        id: 2,
+        name: 'background'
+    },
+    {
+        id: 3,
+        name: 'padding'
+    }
+];
+
+const MenuItems = [
+    {
+        id: 1,
+        name: 'home'
+    },
+    {
+        id: 2,
+        name: 'about'
+    },
+    {
+        id: 3,
+        name: 'contact'
+    }
+];
+
+export { PARTS, ACTIONS, PartsEnum, EditItems, MenuItems };

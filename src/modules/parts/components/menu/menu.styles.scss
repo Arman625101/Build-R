@@ -1,0 +1,28 @@
+:host {
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: lightslategrey;
+
+        .left {
+            .logo {
+            }
+        }
+        .right {
+            ul {
+                display: flex;
+                list-style-type: none;
+                li {
+                    margin: 0 5px;
+                    padding: 5px 10px;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

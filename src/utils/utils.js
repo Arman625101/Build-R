@@ -11,4 +11,6 @@ function makeSingleTone(newClass) {
     return newClass.instance;
 }
 
+// TODO: Function which creating automatically dom with emmet;
+
 export { createStyle, makeSingleTone };
