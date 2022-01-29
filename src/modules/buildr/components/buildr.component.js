@@ -3,7 +3,7 @@ import { createStyle } from '../../../utils/utils';
 import styles from './style.scss';
 
 export class BuildrComponent extends HTMLElement {
-    #parts = PARTS;
+    #actions = PARTS;
     constructor() {
         super();
     }
@@ -12,29 +12,30 @@ export class BuildrComponent extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(createStyle(styles));
 
-        this.generateParts(this.#parts);
+        this.generateActions();
     }
 
-    generateParts(parts) {
-        for (const part of parts) {
-            const item = document.createElement('div');
+    generateActions() {
+        for (const { id, name } of this.#actions) {
+            const action = document.createElement('div');
+            action.classList.add('action');
+            action.id = id;
+            action.innerText = name;
 
-            item.classList.add('action');
-            item.id = part.id;
-            item.innerText = part.name;
-            item.addEventListener('click', (event) => {
-                this.dispatchEvent(
-                    new CustomEvent('partsClickEvent', {
-                        composed: true,
-                        bubbles: true,
-                        detail: parts.find(
-                            (part) => part.id === +event.target.id
-                        )
-                    })
-                );
-            });
+            action.addEventListener('click', this.handleActionClick);
 
-            this.shadowRoot.append(item);
+            this.shadowRoot.append(action);
         }
     }
+
+    handleActionClick = ({ target }) => {
+        target.remove();
+        this.dispatchEvent(
+            new CustomEvent('partsClickEvent', {
+                composed: true,
+                bubbles: true,
+                detail: this.#actions.find((action) => action.id === +target.id)
+            })
+        );
+    };
 }
