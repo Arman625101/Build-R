@@ -8,6 +8,7 @@ export class MenuComponent extends Part {
         this.attachShadow({ mode: 'open' });
         const menu = document.createElement('div');
         menu.innerHTML = 'Hello World I am dynamic menu';
+
         this.shadowRoot.appendChild(menu);
     }
 }

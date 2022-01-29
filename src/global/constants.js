@@ -3,14 +3,13 @@ const ACTIONS = [];
 const PartsEnum = {
     Menu: 'menu',
     Sidebar: 'sidebar',
-    Footer: 'footer',
+    Footer: 'footer'
 };
 
 const PARTS = [
-    { id: 1, action: 'create', name: 'menu' },
-    { id: 2, action: 'create', name: 'sidebar' },
-    { id: 3, action: 'create', name: 'footer' },
-    { id: 4, action: 'create', name: 'Elements...' },
+    { id: 1, action: 'create', name: PartsEnum.Menu },
+    { id: 2, action: 'create', name: PartsEnum.Sidebar },
+    { id: 3, action: 'create', name: PartsEnum.Footer }
 ];
 
 export { PARTS, ACTIONS, PartsEnum };

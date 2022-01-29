@@ -4,20 +4,18 @@ import { BuildrComponent } from './components/buildr.component';
 
 export default class BuildrModule {
     constructor() {
-        makeSingleTone.call(this, BuildrModule);
+        // makeSingleTone.call(this, BuildrModule);
     }
 
-    render() {
+    static render() {
         customElements.define('build-r', BuildrComponent);
+        const container = document.getElementById('container');
         const buildr = document.createElement('build-r');
 
-        buildr.addEventListener('partsClickEvent', this.handleClick);
-        
-        return buildr;
-    }
+        buildr.addEventListener('partsClickEvent', ({ detail }) => {
+            PartsModule.render(detail);
+        });
 
-    handleClick(event) {
-        const clickedPart = event.detail;
-        PartsModule.render(clickedPart);
+        container.append(buildr);
     }
 }
