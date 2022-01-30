@@ -12,13 +12,13 @@ export default class EditorModule {
         }
     }
     render() {
-        this.#removePrevNodes();
+        this.removePrevNodes();
         const editor = document.createElement('edito-r');
         this.#attachToCursor(editor);
         this.#shadowRoot.appendChild(editor);
     }
 
-    #removePrevNodes() {
+    removePrevNodes() {
         this.#shadowRoot.querySelectorAll('edito-r').forEach((node) => {
             node.remove();
         });

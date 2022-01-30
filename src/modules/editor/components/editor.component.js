@@ -8,16 +8,11 @@ export class EditorComponent extends HTMLElement {
         super();
     }
     connectedCallback() {
-        // TODO: Handle events to close editor---
-        // document.addEventListener('click', (event) => {
-        //     console.log(event.target);
-        //     console.log(this);
-        //     if (event.target !== this.shadowRoot) {
-        //         this.shadowRoot.remove();
-        //     }
-        // });
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(createStyle(styles));
+        this.shadowRoot.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
 
         const ul = document.createElement('ul');
         for (const { id, name } of this.#items) {

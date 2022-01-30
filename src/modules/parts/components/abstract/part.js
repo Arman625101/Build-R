@@ -8,6 +8,10 @@ export class Part extends HTMLElement {
             event.preventDefault();
             const editor = new EditorModule(event, this.shadowRoot);
             editor.render();
+
+            document.addEventListener('click', () => {
+                editor.removePrevNodes();
+            });
         });
     }
 }
