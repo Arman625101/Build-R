@@ -10,6 +10,7 @@ export class MenuComponent extends Part {
     }
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
+        super.connectedCallback();
         this.shadowRoot.appendChild(createStyle(styles));
 
         const header = document.createElement('header');

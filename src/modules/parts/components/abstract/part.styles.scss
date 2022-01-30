@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    border: 3px solid transparent;
+    background-color: lightslategrey;
+    transition: all 0.3s;
+}
+:host(:hover) {
+    background-image: linear-gradient(white, white),
+        linear-gradient(180deg, cornflowerblue, purple 50%, cornflowerblue);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 200%;
+    background-position: 0 0, 0 100%;
+    background-origin: padding-box, border-box;
+    animation: highlight 1s infinite alternate;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+@keyframes highlight {
+    100% {
+        background-position: 0 0, 0 0;
+    }
+}
