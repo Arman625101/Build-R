@@ -1,7 +1,7 @@
-const createStyle = (style) => {
+const createStyle = (container, style) => {
     const styleElement = document.createElement('style');
     styleElement.innerHTML = style;
-    return styleElement;
+    container.append(styleElement);
 };
 
 function makeSingleTone(newClass) {

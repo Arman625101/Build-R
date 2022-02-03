@@ -1,11 +1,11 @@
 import BuildrModule from './modules/buildr/buildr.module';
 import { createStyle } from './utils/utils';
 
-import style from './index.scss';
+import styles from './index.scss';
 
 (function () {
     const container = document.getElementById('container');
-    container.append(createStyle(style));
+    createStyle(container, styles);
 
-    BuildrModule.render();
+    BuildrModule.render(container);
 })();

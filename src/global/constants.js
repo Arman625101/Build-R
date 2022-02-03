@@ -1,3 +1,7 @@
+import { FooterComponent } from '../modules/parts/components/footer/footer.component';
+import { MenuComponent } from '../modules/parts/components/menu/menu.component';
+import { SideBarComponent } from '../modules/parts/components/sidebar/sidebar.component';
+
 const ACTIONS = [];
 
 const PartsEnum = {
@@ -7,9 +11,27 @@ const PartsEnum = {
 };
 
 const PARTS = [
-    { id: 1, action: 'create', name: PartsEnum.Menu },
-    { id: 2, action: 'create', name: PartsEnum.Sidebar },
-    { id: 3, action: 'create', name: PartsEnum.Footer }
+    {
+        id: 1,
+        action: 'create',
+        name: PartsEnum.Menu,
+        tagName: 'menu-r',
+        component: MenuComponent
+    },
+    {
+        id: 2,
+        action: 'create',
+        name: PartsEnum.Sidebar,
+        tagName: 'sidebar-r',
+        component: SideBarComponent
+    },
+    {
+        id: 3,
+        action: 'create',
+        name: PartsEnum.Footer,
+        tagName: 'footer-r',
+        component: FooterComponent
+    }
 ];
 
 const EditItems = [

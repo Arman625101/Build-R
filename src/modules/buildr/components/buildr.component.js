@@ -10,7 +10,7 @@ export class BuildrComponent extends HTMLElement {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(createStyle(styles));
+        createStyle(this.shadowRoot, styles);
 
         this.generateActions();
     }

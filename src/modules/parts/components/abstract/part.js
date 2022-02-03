@@ -6,8 +6,12 @@ export class Part extends HTMLElement {
     constructor() {
         super();
     }
+    createElement({ tagName, component }) {
+        customElements.define(tagName, component);
+        return document.createElement(tagName);
+    }
     connectedCallback() {
-        this.shadowRoot.append(createStyle(styles));
+        createStyle(this.shadowRoot, styles);
         this.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             const editor = new EditorModule(event, this.shadowRoot);
@@ -19,4 +23,6 @@ export class Part extends HTMLElement {
             });
         });
     }
+
+    createPart(part) {}
 }
