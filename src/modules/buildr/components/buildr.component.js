@@ -3,7 +3,6 @@ import { createStyle } from '../../../utils/utils';
 import styles from './buildr.styles.scss';
 
 export class BuildrComponent extends HTMLElement {
-    #actions = PARTS;
     constructor() {
         super();
     }
@@ -11,12 +10,11 @@ export class BuildrComponent extends HTMLElement {
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         createStyle(this.shadowRoot, styles);
-
         this.generateActions();
     }
 
     generateActions() {
-        for (const { id, name } of this.#actions) {
+        for (const { id, name } of PARTS) {
             const action = document.createElement('div');
             action.classList.add('action');
             action.id = id;
@@ -34,7 +32,7 @@ export class BuildrComponent extends HTMLElement {
             new CustomEvent('partsClickEvent', {
                 composed: true,
                 bubbles: true,
-                detail: this.#actions.find((action) => action.id === +target.id)
+                detail: PARTS.find((action) => action.id === +target.id)
             })
         );
     };

@@ -1,38 +1,39 @@
-import { PartsFactory } from './parts.factory';
+import { BaseModule } from '../../global/Base.module';
 
-export default class PartsModule {
-    constructor() {}
-
-    static render(container, part) {
-        // TODO: Dynamic function to dynamically append new parts to container in right position
-        console.log(container.childNodes);
-        const newPart = this.createPart(part);
-        // const iterator = ;
-        // console.log(iterator.next().value.getAttribute('order'));
-        // console.log(iterator.next().value.getAttribute('order'));
-        for (const node of container.childNodes.values()) {
-            const order = node.getAttribute('order');
-            if (part.id < order) {
-                container.insertBefore(newPart, node);
-                return;
-            } else {
-                node.after(newPart);
-                return;
-            }
+export default class PartsModule extends BaseModule {
+    constructor() {
+        super();
+        if (!PartsModule.instance) {
+            PartsModule.instance = this;
+        } else {
+            return PartsModule.instance;
         }
-        //     console.log(part.id, order);
-        // }
-        // container.prepend(newPart);
     }
 
-    static createPart({ tagName, component, id }) {
-        customElements.define(tagName, component);
-        const elem = document.createElement(tagName);
-        elem.setAttribute('order', id);
-        return elem;
+    renderPart({ tagName, component, id: newOrder }) {
+        const newElem = this.defineElement(tagName, component);
+        newElem.setAttribute('order', newOrder);
+
+        const childElements = [].slice
+            .call(this.container.querySelectorAll('[order]'))
+            .sort((a, b) => a.getAttribute('order') - b.getAttribute('order'));
+
+        this.renderInRightOrder(childElements, newElem);
     }
 
-    // static render(container, { tagName, component }) {
-
-    // }
+    renderInRightOrder(childElements, newElem) {
+        if (childElements.length) {
+            childElements.some((child) => {
+                if (newElem.getAttribute('order') > child.getAttribute('order')) {
+                    child.after(newElem);
+                    return true;
+                } else {
+                    child.before(newElem);
+                    return true;
+                }
+            });
+        } else {
+            this.container.appendChild(newElem);
+        }
+    }
 }
