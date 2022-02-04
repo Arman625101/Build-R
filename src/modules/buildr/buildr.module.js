@@ -1,18 +1,22 @@
+import { BaseModule } from '../../global/Base.module';
 import PartsModule from '../parts/parts.module';
 import { BuildrComponent } from './components/buildr.component';
 
-export default class BuildrModule {
-    constructor() {}
+export default class BuildrModule extends BaseModule {
+    constructor() {
+        super();
+        this.render();
+    }
 
-    static render() {
-        customElements.define('build-r', BuildrComponent);
-        const container = document.getElementById('container');
-        const buildr = document.createElement('build-r');
+    render() {
+        const buildr = this.defineElement('build-r', BuildrComponent);
+        buildr.addEventListener('partsClickEvent', this.handlePartClick);
 
-        buildr.addEventListener('partsClickEvent', ({ detail }) => {
-            PartsModule.render(detail);
-        });
+        this.container.append(buildr);
+    }
 
-        container.append(buildr);
+    handlePartClick({ detail }) {
+        const partsModule = new PartsModule();
+        partsModule.renderPart(detail);
     }
 }

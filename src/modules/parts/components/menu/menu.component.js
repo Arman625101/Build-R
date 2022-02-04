@@ -11,10 +11,9 @@ export class MenuComponent extends Part {
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         super.connectedCallback();
-        this.shadowRoot.appendChild(createStyle(styles));
 
+        createStyle(this.shadowRoot, styles);
         const header = document.createElement('header');
-
         const left = document.createElement('div');
         const right = document.createElement('div');
         const list = document.createElement('ul');

@@ -25,7 +25,7 @@ export default class EditorModule {
     }
 
     #attachToCursor(editor) {
-        editor.style.left = `${this.#event.offsetX}px`;
-        editor.style.top = `${this.#event.offsetY}px`;
+        editor.style.left = `${this.#event.offsetX + 5}px`;
+        editor.style.top = `${this.#event.offsetY + 20}px`;
     }
 }

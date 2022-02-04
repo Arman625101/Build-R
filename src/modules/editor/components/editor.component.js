@@ -9,7 +9,7 @@ export class EditorComponent extends HTMLElement {
     }
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(createStyle(styles));
+        createStyle(this.shadowRoot, styles);
         this.shadowRoot.addEventListener('click', (event) => {
             event.stopPropagation();
         });
