@@ -1,5 +1,5 @@
 import { PARTS } from '../../../global/constants';
-import { createStyle } from '../../../utils/utils';
+import { createStyle, htmlToDOM } from '../../../utils/utils';
 import styles from './buildr.styles.scss';
 
 export class BuildrComponent extends HTMLElement {
@@ -14,6 +14,7 @@ export class BuildrComponent extends HTMLElement {
     }
 
     generateActions() {
+        // console.log(htmlToDOM('ul>li*2'));
         for (const { id, name } of PARTS) {
             const action = document.createElement('div');
             action.classList.add('action');
