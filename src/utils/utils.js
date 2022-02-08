@@ -45,7 +45,6 @@ const htmlToDOM = (html) => {
             toAppend = false;
         }
     });
-    console.log(mainElement);
 };
 
 htmlToDOM('ul.list>li#a');
