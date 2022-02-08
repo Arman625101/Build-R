@@ -14,7 +14,6 @@ export class BuildrComponent extends HTMLElement {
     }
 
     generateActions() {
-        // console.log(htmlToDOM('ul>li*2'));
         for (const { id, name } of PARTS) {
             const action = document.createElement('div');
             action.classList.add('action');
